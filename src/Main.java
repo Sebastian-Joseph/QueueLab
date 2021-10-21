@@ -4,17 +4,24 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList<String> booths = new LinkedList<String>();
-        booths.add("1");
-        booths.add("2");
-        booths.add("3");
-        booths.add("4");
-        System.out.println(booths);
+        LinkedList<String> alpha = new LinkedList<String>();
+        alpha.add("");
 
-        Iterator iterator = booths.iterator();
+        System.out.println(alpha);
+
+        LinkedList<String> beta = new LinkedList<String>();
+        beta.add("");
+
+        LinkedList<String> tango = new LinkedList<String>();
+        tango.add("");
+
+        LinkedList<String> sigma = new LinkedList<String>();
+        sigma.add("");
+
+         /* Iterator iterator = alpha.iterator();
 
         while (iterator.hasNext()) {
             System.out.println(iterator.next()+" ");
-        }
+        } */
     }
 }
