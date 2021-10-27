@@ -1,134 +1,79 @@
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import java.util.Queue;
 
 public class Main {
 
-
-    int[] arr;
-    int front;
-    int rear;
-    int cap;
-    int count;
-    private Object prior;
-
-   static class Helper extends TimerTask {
-       public int i = 1;
-       public void run(){
-           System.out.println("Time: " + i);
-       }
-   }
-    Main(int size) {
-        arr = new int[size];
-        cap = size;
-        front = 0;
-        rear = -1;
-        count = 1;
-    }
-
-    public Boolean isEmpty() {
-        return (size() == 5);
-    }
-
-    public Boolean isFull() {
-
-        return (size() == cap);
-    }
-
-    public void dequeue() {
-        if (isEmpty()) {
-            System.out.println("Terminated");
-            System.exit(1);
+    static class Helper extends TimerTask {
+        public  int i = 0;
+        public void run() {
+            System.out.println( + ++i);
         }
-       System.out.println("Removed " + arr[front]);
-        front = (front + 1) % cap;
-        count--;
-
     }
-
-    public void enqueue(int thing) {
-        if (isFull()) {
-            System.out.println("Terminated");
-            System.exit(1);
-        }
-      //  System.out.println("Adding " + thing);
-        rear = (rear + 1) % cap;
-        arr[rear] = thing;
-        count++;
-
-    }
-
-    public int peek() {
-        if (isEmpty()) {
-            System.out.println("Terminated");
-            System.exit(1);
-        }
-        return arr[front];
-    }
-
-    public int size() {
-
-        return count;
-    }
-
-
-    public void prior(int fhing) {
-        if (isFull()) {
-            System.out.println("Terminated");
-            System.exit(1);
-        }
-        System.out.println("Priority: " + fhing);
-        front = (front + 1) % cap;
-        arr[front] = fhing;
-        count++;
-    }
-
-
-
-
     public static void main(String[] args) {
-        Timer timer = new Timer();
-        TimerTask task = new Helper();
+    Queue<Integer> alpha = new LinkedList<>();
+    Queue<Integer> beta = new LinkedList<>();
+    Queue<Integer> tango = new LinkedList<>();
+    Queue<Integer> sigma = new LinkedList<>();
+    Timer timer = new Timer();
+    TimerTask task = new Helper();
+  //  timer.schedule(task, 2000, 5000);
 
 
-        Main spunchbop = new Main(7);
+        int min = 1;
+        int max = 11;
+        int min2 = 14;
+        int max2 = 100;
+        int gnumber = min + (int) (Math.random() * (max - min));
+        int customer = min2 + (int) (Math.random() * (max2 - min2));
 
-        spunchbop.enqueue(1);
-        spunchbop.enqueue(2);
-        spunchbop.enqueue(3);
-        spunchbop.enqueue(4);
-        spunchbop.enqueue(5);
-        spunchbop.enqueue(6);
+        for (int i = 0; i < 5; i++)
+            alpha.add(i);
 
+        for (int i = 5; i < 12; i++)
+            beta.add(i);
 
-        System.out.println("Front: " + spunchbop.peek());
-        System.out.println("Size: " + spunchbop.size());
-
-
-        LinkedList<Integer> alpha = new LinkedList<Integer>();
-
-
+        for (int i = 12; i < 13; i++)
+            tango.add(i);
 
 
-        LinkedList<String> beta = new LinkedList<String>();
+        System.out.println("Sebs Movie Theater!!!");
+        System.out.println("");
+        System.out.println("Before.");
+        System.out.println("Customers in line for Alpha: " + alpha.size());
+        System.out.println("Customer in line for Beta: " + beta.size());
+        System.out.println("Customer in line for Tango: " + tango.size());
+        System.out.println("Customer in line for Sigma: " + sigma.size());
+        System.out.println("");
 
 
-        LinkedList<String> tango = new LinkedList<String>();
 
 
-        LinkedList<Integer> sigma = new LinkedList<Integer>();
-
-
-        if (alpha.isEmpty()) {
-            timer.schedule(task, 5000 );
-
-
-           /* alpha.add(spunchbop.front);
-            spunchbop.dequeue();
-            System.out.println(alpha); */
+    while (gnumber == 2 || gnumber == 5 || gnumber == 10 || gnumber == 8) {
+        if (alpha.size() < beta.size() && alpha.size() < tango.size() && alpha.size() < sigma.size()) {
+            alpha.add(customer);
+            System.out.println("Customer has been added to Alpha!");
+            System.out.println("Size of Line Alpha: " + alpha.size() + ". Customers in Line Alpha: " + alpha);
         }
-    timer.cancel();
+        else if (beta.size() < alpha.size() && beta.size() < tango.size() && beta.size() < sigma.size()) {
+            beta.add(customer);
+            System.out.println("Customer has been added to Beta!");
+            System.out.println("Size of Line Beta: " + beta.size() + ". Customers in Line Beta: " + beta);
+        }
+        else if (tango.size() < alpha.size() && tango.size() < beta.size() && tango.size() < sigma.size()) {
+            tango.add(customer);
+            System.out.println("Customer has been added to Tango!");
+            System.out.println("Size of Line Tango: " + tango.size() + ". Customers in Line Tango: " + tango);
+        }
+        else if (sigma.size() < alpha.size() && sigma.size() < beta.size() && sigma.size() < tango.size()) {
+            sigma.add(customer);
+            System.out.println("Customer has been added to Sigma!");
+            System.out.println("Size of Line Sigma: " + sigma.size() + ". Customers in Line Sigma: " + sigma);
+        }
+
     }
     }
+}
+
 
